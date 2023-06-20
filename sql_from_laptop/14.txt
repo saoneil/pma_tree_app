@@ -1,0 +1,10 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registration_data_raw`()
+BEGIN
+
+select
+round(datediff(now(), raw.date_of_birth)/365, 1) as `age`,
+raw.*
+from registration_data_raw raw;
+
+
+END

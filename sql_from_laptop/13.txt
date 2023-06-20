@@ -1,0 +1,15 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_add_to_temp_table`(in in_id int)
+BEGIN
+
+insert into 
+temp_table
+
+select
+*
+from 
+registration_data_raw
+where
+id = in_id
+;
+
+END

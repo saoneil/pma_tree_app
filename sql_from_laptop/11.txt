@@ -1,0 +1,19 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `mark_event_complete`(IN in_id int, IN in_event_string varchar(50))
+BEGIN
+
+case
+
+when in_event_string = "individual_patterns" then update registration_data_raw set individual_patterns_complete = 1 where id = in_id;
+when in_event_string = "individual_sparring" then update registration_data_raw set individual_sparring_complete = 1 where id = in_id;
+when in_event_string = "individual_special_technique" then update registration_data_raw set individual_special_technique_complete = 1 where id = in_id;
+when in_event_string = "individual_power_test" then update registration_data_raw set individual_power_test_complete = 1 where id = in_id;
+when in_event_string = "team_prearranged_sparring" then update registration_data_raw set team_prearranged_sparring_complete = 1 where id = in_id;
+when in_event_string = "team_patterns" then update registration_data_raw set team_patterns_complete = 1 where id = in_id;
+when in_event_string = "team_sparring" then update registration_data_raw set team_sparring_complete = 1 where id = in_id;
+when in_event_string = "team_special_technique" then update registration_data_raw set team_special_technique_complete = 1 where id = in_id;
+when in_event_string = "team_power_test" then update registration_data_raw set team_power_test_complete = 1 where id = in_id;
+
+end case
+
+;
+END

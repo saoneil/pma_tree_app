@@ -99,12 +99,10 @@ def filter_grid(
     current_event_filter = sql_event_name1
 def mark_event_complete(event:str, id_list:list):
     for id in id_list:
-        update_sql = f"""
-        update registration_data_raw
-        set {event}_complete = 1
-        where id = {id}
-        """
-        execute_sql(get_connection("pma_tournaments"), update_sql)
+        update_sql = f"""update registration_data_raw set {event}_complete = 1 where id = {id};"""
+        update_sql_query = text(update_sql)
+        cn = get_connection("pma_tournaments")
+        execute_sql(cn, update_sql_query)
 def reset_sql_start_over():
     ## insert into the temp table using the filter criteria passed into this function
     start_over_sql = f"""
@@ -120,10 +118,6 @@ def reset_sql_start_over():
     team_special_technique_complete = 0,
     team_power_test_complete = 0
     """
-    schema_name = "pma_tournaments"
-    dburi = f'mysql://{mysql_user}:{urllib.parse.quote(mysql_pass)}@{mysql_host}/{schema_name}' # type: ignore
-    db = create_engine(dburi)
-    con = db.connect()
-    insert_query = text(start_over_sql)
-    con.execute(insert_query)
-    con.commit()
+    start_over_sql_query = text(start_over_sql)
+    cn = get_connection("pma_tournaments")
+    execute_sql(cn, start_over_sql_query)

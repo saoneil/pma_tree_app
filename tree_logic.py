@@ -14,10 +14,9 @@ def ask_save_location():
     if not destination_path:
         # User canceled the file dialog
         print("Save operation canceled.")
-        exit()
+        #exit()
 
     return destination_path
-
 def two_tree(competitors:list, competitors_with_byes:list):
     original_file_path = 'tree_templates\\2.xlsx'
 
@@ -35,9 +34,11 @@ def two_tree(competitors:list, competitors_with_byes:list):
     sheet['J16'] = competitors_with_byes[0][0]
     sheet['J17'] = competitors_with_byes[0][1]
 
-
-    workbook.save("trees_xlsx\\test_2.xlsx")
-    workbook.close()
+    save_location = ask_save_location()
+    if save_location is not None:
+        workbook.save(save_location)
+    else:
+        workbook.close()
 def four_tree(competitors:list, competitors_with_byes:list):
     original_file_path = 'tree_templates\\4.xlsx'
 
@@ -62,8 +63,11 @@ def four_tree(competitors:list, competitors_with_byes:list):
     sheet['G14'] = competitors_with_byes[0][1]
 
 
-    workbook.save("trees_xlsx\\test_4.xlsx")
-    workbook.close()
+    save_location = ask_save_location()
+    if save_location is not None:
+        workbook.save(save_location)
+    else:
+        workbook.close()
 def eight_tree(competitors:list, competitors_with_byes:list):
     original_file_path = 'tree_templates\\8.xlsx'
 
@@ -106,8 +110,11 @@ def eight_tree(competitors:list, competitors_with_byes:list):
     sheet['E27'] = competitors_with_byes[2][1]
 
 
-    workbook.save("trees_xlsx\\test_8.xlsx")
-    workbook.close()
+    save_location = ask_save_location()
+    if save_location is not None:
+        workbook.save(save_location)
+    else:
+        workbook.close()
 def sixteen_tree(competitors:list, competitors_with_byes:list):
     original_file_path = 'tree_templates\\16.xlsx'
 
@@ -185,9 +192,11 @@ def sixteen_tree(competitors:list, competitors_with_byes:list):
     sheet['E53'] = competitors_with_byes[6][0]
     sheet['E54'] = competitors_with_byes[6][1]
 
-
-    workbook.save("trees_xlsx\\test_16.xlsx")
-    workbook.close()
+    save_location = ask_save_location()
+    if save_location is not None:
+        workbook.save(save_location)
+    else:
+        workbook.close()
 def thirtytwo_tree(competitors:list, competitors_with_byes:list):
     original_file_path = 'tree_templates\\32.xlsx'
 
@@ -339,8 +348,11 @@ def thirtytwo_tree(competitors:list, competitors_with_byes:list):
     sheet['E118'] = competitors_with_byes[0][1]
     
 
-    workbook.save("trees_xlsx\\test_32.xlsx")
-    workbook.close()
+    save_location = ask_save_location()
+    if save_location is not None:
+        workbook.save(save_location)
+    else:
+        workbook.close()
 def process_dataframe(df:pd.DataFrame):
     concatenated_fields = []
     
@@ -391,8 +403,4 @@ def generate_xlsx_files():
     else:
         print("There are too many competitors selected, a template of that size does not exist")
 
-    
-
-    # the grid is randomized, grouped by club
-    # I can now parse the first name, last name, club and put it into one of the excel templates
-    # once done, i need to mark the event complete for all the ids that were in the original list
+    backend.mark_event_complete(event, id_list)

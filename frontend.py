@@ -6,7 +6,6 @@ import tree_logic
 import xlsx_to_pdf
 
 
-
 def update_gup_dan_options():
     black_belt = black_belt_combobox.get()
     if black_belt == "Black Belts":
@@ -110,7 +109,6 @@ def build_xlsx_trees():
     tree_logic.generate_xlsx_files()
 
 
-
 root = tk.Tk()
 root.title("PMA - Tournament App")
 root.geometry('1500x700')  # Set the default window size
@@ -147,7 +145,6 @@ event_combobox.pack(pady=(0, 10))
 gender_label = ttk.Label(search_panel, text="Gender:")
 gender_label.pack()
 gender_combobox = ttk.Combobox(search_panel, values=["", "Male", "Female"], width=10)
-gender_combobox.current(1) ##################   for testing, delete
 gender_combobox.pack(pady=(0, 10))
 
 # Height
@@ -159,13 +156,11 @@ height_frame.pack(pady=(0, 10))
 height_min_label = ttk.Label(height_frame, text="Min:")
 height_min_label.pack(side="left")
 height_min_entry = ttk.Entry(height_frame, width=7)
-height_min_entry.insert(0, "125") ##################   for testing, delete
 height_min_entry.pack(side="left")
 
 height_max_label = ttk.Label(height_frame, text="Max:")
 height_max_label.pack(side="left", padx=(10, 0))
 height_max_entry = ttk.Entry(height_frame, width=7)
-height_max_entry.insert(0, "165") ##################   for testing, delete
 height_max_entry.pack(side="left")
 
 # Weight
@@ -215,7 +210,6 @@ rank_frame.pack(pady=(0, 10))
 black_belt_label = ttk.Label(rank_frame, text="Belt:", font = "Verdana 8")
 black_belt_label.pack(side="left")
 black_belt_combobox = ttk.Combobox(rank_frame, values=["", "Black Belts", "Color Belts"], state="readonly", width=7)
-black_belt_combobox.current(1) ##################   for testing, delete
 black_belt_combobox.pack(side="left")
 
 # Gup/Dan
@@ -223,7 +217,6 @@ gup_dan_label = ttk.Label(rank_frame, text="#:", font = "Verdana 8")
 gup_dan_label.pack(side="left", padx=(10, 0))
 gup_dan_combobox_var = tk.StringVar()
 gup_dan_combobox = ttk.Combobox(rank_frame, state="readonly", textvariable=gup_dan_combobox_var, width=15)
-#gup_dan_combobox.current(1) ##################   for testing, delete
 gup_dan_combobox.pack(side="left")
 
 # Bind the lambda function to the combobox

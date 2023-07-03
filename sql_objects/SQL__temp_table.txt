@@ -1,5 +1,5 @@
 CREATE TABLE `temp_table` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL,
   `first_name` varchar(50) NOT NULL DEFAULT 'empty',
   `last_name` varchar(50) NOT NULL DEFAULT 'empty',
   `date_of_birth` date NOT NULL DEFAULT '2099-01-01',
@@ -27,5 +27,5 @@ CREATE TABLE `temp_table` (
   `team_special_technique_complete` int NOT NULL DEFAULT '0',
   `team_power_test` int NOT NULL DEFAULT '0',
   `team_power_test_complete` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `athlete_complete` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

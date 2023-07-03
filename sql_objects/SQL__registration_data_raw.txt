@@ -27,5 +27,6 @@ CREATE TABLE `registration_data_raw` (
   `team_special_technique_complete` int NOT NULL DEFAULT '0',
   `team_power_test` int NOT NULL DEFAULT '0',
   `team_power_test_complete` int NOT NULL DEFAULT '0',
+  `athlete_complete` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+) ENGINE=InnoDB AUTO_INCREMENT=318 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

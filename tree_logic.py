@@ -2,6 +2,7 @@ from resources.resources import get_connection, get_dataframe
 import backend
 import pandas as pd
 import math
+import os
 import openpyxl
 from openpyxl.worksheet.worksheet import Worksheet
 from tkinter import Tk, filedialog
@@ -16,7 +17,11 @@ def ask_save_location():
         print("Save operation canceled.")
         #exit()
 
-    return destination_path
+    file_name = None
+    if destination_path:
+        file_name_with_extension = destination_path.split('/')[-1]
+        file_name = os.path.splitext(file_name_with_extension)[0]
+    return destination_path, file_name
 def two_tree(competitors:list, competitors_with_byes:list):
     original_file_path = 'tree_templates\\2.xlsx'
 
@@ -34,9 +39,11 @@ def two_tree(competitors:list, competitors_with_byes:list):
     sheet['J16'] = competitors_with_byes[0][0]
     sheet['J17'] = competitors_with_byes[0][1]
 
-    save_location = ask_save_location()
+    save_location, file_name = ask_save_location()
     if save_location is not None:
+        sheet['A1'] = file_name
         workbook.save(save_location)
+        workbook.close()
     else:
         workbook.close()
 def four_tree(competitors:list, competitors_with_byes:list):
@@ -63,8 +70,9 @@ def four_tree(competitors:list, competitors_with_byes:list):
     sheet['G14'] = competitors_with_byes[0][1]
 
 
-    save_location = ask_save_location()
+    save_location, file_name = ask_save_location()
     if save_location is not None:
+        sheet['A1'] = file_name
         workbook.save(save_location)
     else:
         workbook.close()
@@ -110,8 +118,9 @@ def eight_tree(competitors:list, competitors_with_byes:list):
     sheet['E27'] = competitors_with_byes[2][1]
 
 
-    save_location = ask_save_location()
+    save_location, file_name = ask_save_location()
     if save_location is not None:
+        sheet['A1'] = file_name
         workbook.save(save_location)
     else:
         workbook.close()
@@ -192,8 +201,9 @@ def sixteen_tree(competitors:list, competitors_with_byes:list):
     sheet['E53'] = competitors_with_byes[6][0]
     sheet['E54'] = competitors_with_byes[6][1]
 
-    save_location = ask_save_location()
+    save_location, file_name = ask_save_location()
     if save_location is not None:
+        sheet['K6'] = file_name
         workbook.save(save_location)
     else:
         workbook.close()
@@ -348,8 +358,9 @@ def thirtytwo_tree(competitors:list, competitors_with_byes:list):
     sheet['E118'] = competitors_with_byes[0][1]
     
 
-    save_location = ask_save_location()
+    save_location, file_name = ask_save_location()
     if save_location is not None:
+        sheet['K6'] = file_name
         workbook.save(save_location)
     else:
         workbook.close()
